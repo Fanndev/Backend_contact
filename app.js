@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const methodOverride = require("method-override");
+const cors = require("cors");
 // Penggunaan Npm express
 const app = express();
 
@@ -34,6 +35,8 @@ app.use(
     saveUninitialized: false,
   })
 );
+// Menggunakan middleware CORS untuk mengatasi keterbatasan akses pada endpoint
+app.use(cors());
 
 // middleware routes
 require("./src/routes")(express, app);
